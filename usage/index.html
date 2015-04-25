@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide - ThemeTweaker Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_custom.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> ThemeTweaker Documentation</a>
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <ul class="current">
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="..">Home</a>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 current">
+                <a class="current" href="./">User Guide</a>
+                
+                    <ul>
+                    
+                        <li class="toctree-l3"><a href="#user-guide">User Guide</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#overview">Overview</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#basic-commands">Basic commands</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#special-commands">Special Commands</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#custom-filter-command">Custom Filter Command</a></li>
+                        
+                    
+                    </ul>
+                
+            </li>
+        
+
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../license/">License</a>
+                
+            </li>
+        
+
+    
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">ThemeTweaker Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+    <li>User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/facelessuser/ThemeTweaker" class="icon icon-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              <h1 class="doctitle" id="user-guide"><a name="user-content-user-guide" href="#user-guide" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>User Guide</h1>
+<p class="doctitle-info">Configuration and usage of ThemeTweaker.<br /></p>
+<hr />
+<h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
+<p>In order to use ThemeTweaker, you can set up command palette commands, keymaps, menu items etc.  ThemeTweaker comes with an example keymap file to show how commands are constructed.</p>
+<p>The default steps, or hues, or intensities (depending on the command), are defined in the settings file.  These can be changed if desired.</p>
+<h1 id="basic-commands"><a name="user-content-basic-commands" href="#basic-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Basic commands</h1>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Brightness</td>
+<td><code>ThemeTweakerBrightnessCommand</code> can take a step value of float type to determine the magnitude of brightness to apply.  It is in relation to the center <code>1.0</code>.  So a value of <code>0.01</code> would shift it <code>1.01</code>. It also takes a direction argument which is denoted with a <code>+</code> or <code>-</code> direction. You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>Saturation</td>
+<td><code>ThemeTweakerSaturationCommand</code> can take a step value of float type to determine the magnitude of saturation to apply.  It is in relation to the center <code>1.0</code>.  So a value of <code>0.01</code> would shift it <code>1.01</code>. It also takes a direction argument which is denoted with a <code>+</code> or <code>-</code> direction.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>Hue</td>
+<td><code>ThemeTweakerHueCommand</code> can take an integer which represents a degree between <code>0</code> and <code>360</code> to shift the hue.  It also takes a direction argument which is denoted with a <code>+</code> or <code>-</code> direction.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>Colorize</td>
+<td><code>ThemeTweakerColorizeCommand</code> can take a hue integer that all colors will be converted to.  All colors will be a shade of that hue depending on what their luminance was before conversion. Hues are between <code>0</code> and <code>360</code>.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>Invert</td>
+<td><code>ThemeTweakerInvertCommand</code> will invert all of the colors.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>Sepia</td>
+<td><code>ThemeTweakerSepiaCommand</code> will apply a sepia filter to all colors.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>Grayscale</td>
+<td><code>ThemeTweakerGrayscaleCommand</code> will apply a grayscale filter to all colors.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>Glow</td>
+<td><code>ThemeTweakerGlowCommand</code> can take a floating point glow intensity to determine the strength of the glow.  Glow should be between <code>0.0</code> and <code>1.0</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Commands are constructed like so:<br />
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</p>
+<p>To limit a command or shortcut to only when <code>ThemeMode</code> is enabled:<br />
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</p>
+<p>To override the default step, hue, or intensity (override argument name will vary depending on function):<br />
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;step&quot;</span><span class="o">:</span> <span class="mf">0.05</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</p>
+<p>Apply filter to just the foreground (for all commands except <code>glow</code>):<br />
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;step&quot;</span><span class="o">:</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="s2">&quot;fg&quot;</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</p>
+<p><code>TweakMode</code> can be enabled/disabled via the command palette command <code>Theme Tweaker: Toggle Tweak Mode</code></p>
+<h1 id="special-commands"><a name="user-content-special-commands" href="#special-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Special Commands</h1>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undo</td>
+<td><code>ThemeTweakerUndoCommand</code> reverts the last applied filter.</td>
+</tr>
+<tr>
+<td>Redo</td>
+<td><code>ThemeTweakerRedoCommand</code> re-applies the last applied filter that was reverted.</td>
+</tr>
+<tr>
+<td>Clear</td>
+<td><code>ThemeTweakerClearCommand</code> clears all applied filters.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="custom-filter-command"><a name="user-content-custom-filter-command" href="#custom-filter-command" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Custom Filter Command</h1>
+<p><code>ThemeTweakerCustomCommand</code> is a command that allows you to manually chain different filters together.  It takes a string with special syntax to apply filters.  It will not calculate values in relation to center, or take separate direction arguments etc.  All operations are defined by a single string.</p>
+<p>example:<br />
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_custom&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;filters&quot;</span><span class="o">:</span> <span class="s2">&quot;grayscale@fg;sepia;colorize(0);hue(-30);brightness(1.050000)@bg;saturation(0.900000);brightness(0.950000)&quot;</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+</p>
+<p>The available filters are:<br />
+- grayscale<br />
+- sepia<br />
+- invert<br />
+- brightness(float)<br />
+- saturation(float)<br />
+- hue(signed integer)<br />
+- colorize(integer)<br />
+- glow(positive float)</p>
+<p>To apply a filter to just the foreground or background, simply add <code>@fg</code> or <code>@bg</code> to the filter in question.</p>
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../license/" class="btn btn-neutral float-right" title="License"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+    Copyright &copy; 2013 - 2015 <a href="https://github.com/facelessuser">Isaac Muse</a>
+    
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+    
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        
+            <a href="https://github.com/facelessuser/ThemeTweaker" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+        
+      <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      <span style="margin-left: 15px"><a href="../license/" style="color: #fcfcfc">Next &raquo;</a></span>
+    </span>
+</div>
+
+<!--
+MkDocs version  : 0.12.2
+Docs Build Date : 2015-04-25 15:57:19.276852
+-->
+</body>
+</html>
