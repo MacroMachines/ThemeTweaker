@@ -65,16 +65,13 @@
             
                 <li class="toctree-l3"><a href="#user-guide">User Guide</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#overview">#Overview</a></li>
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
                 
-                    <li><a class="toctree-l4" href="#basic-commands">Basic commands</a></li>
+                    <li><a class="toctree-l4" href="#filter-commands">Filter commands</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#special-commands">Special Commands</a></li>
+                    <li><a class="toctree-l4" href="#special-commands">Special Commands</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#custom-filter-command">Custom Filter Command</a></li>
+                    <li><a class="toctree-l4" href="#constructing-commands">Constructing Commands</a></li>
                 
             
             </ul>
@@ -135,131 +132,285 @@
                 <h1 class="doctitle" id="user-guide"><a name="user-content-user-guide" href="#user-guide" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>User Guide</h1>
 <p>Configuration and usage of ThemeTweaker.</p>
 <hr />
-<h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>#Overview</h1>
-<p>In order to use ThemeTweaker, you can set up command palette commands, keymaps, menu items etc.  ThemeTweaker comes with an example keymap file to show how commands are constructed.</p>
+<h2 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h2>
+<p>In order to use ThemeTweaker, you must set up your desired commands.  Commands can be for the command palette, keymaps, menu etc.  ThemeTweaker comes with an example keymap file to show how commands are constructed.</p>
 <p>The default steps, or hues, or intensities (depending on the command), are defined in the settings file.  These can be changed if desired.</p>
-<h2 id="basic-commands"><a name="user-content-basic-commands" href="#basic-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Basic commands</h2>
+<h2 id="filter-commands"><a name="user-content-filter-commands" href="#filter-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Filter commands</h2>
+<h3 id="brightness"><a name="user-content-brightness" href="#brightness" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Brightness</h3>
+<dl>
+<dt>theme_tweaker_brightness</dt>
+<dd>
+<p>Adjust the brightness of theme.</p>
 <table>
 <thead>
 <tr>
-<th>Action</th>
+<th>Parameters</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Brightness</td>
-<td><code>ThemeTweakerBrightnessCommand</code> can take a step value of float type to determine the magnitude of brightness to apply.  It is in relation to the center <code>1.0</code>.  So a value of <code>0.01</code> would shift it <code>1.01</code>. It also takes a direction argument which is denoted with a <code>+</code> or <code>-</code> direction. You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+<td>direction</td>
+<td>string</td>
+<td>Accepts a string that is either <code>+</code> or &lsquo;-&lsquo; to control whether to go brighter or darker respectively.</td>
 </tr>
 <tr>
-<td>Saturation</td>
-<td><code>ThemeTweakerSaturationCommand</code> can take a step value of float type to determine the magnitude of saturation to apply.  It is in relation to the center <code>1.0</code>.  So a value of <code>0.01</code> would shift it <code>1.01</code>. It also takes a direction argument which is denoted with a <code>+</code> or <code>-</code> direction.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+<td>step</td>
+<td>float</td>
+<td>Controls the brightness magnitude for each step. It is in relation to the center <code>1.0</code>.  So a value of <code>0.01</code> would shift it <code>1.01</code>.</td>
 </tr>
 <tr>
-<td>Hue</td>
-<td><code>ThemeTweakerHueCommand</code> can take an integer which represents a degree between <code>0</code> and <code>360</code> to shift the hue.  It also takes a direction argument which is denoted with a <code>+</code> or <code>-</code> direction.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
+<td>context</td>
+<td>string</td>
+<td>You can limit the filter to the background or foreground by setting the argument to either <code>bg</code> or <code>fg</code> respectively.</td>
 </tr>
 <tr>
-<td>Colorize</td>
-<td><code>ThemeTweakerColorizeCommand</code> can take a hue integer that all colors will be converted to.  All colors will be a shade of that hue depending on what their luminance was before conversion. Hues are between <code>0</code> and <code>360</code>.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
-</tr>
-<tr>
-<td>Invert</td>
-<td><code>ThemeTweakerInvertCommand</code> will invert all of the colors.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
-</tr>
-<tr>
-<td>Sepia</td>
-<td><code>ThemeTweakerSepiaCommand</code> will apply a sepia filter to all colors.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
-</tr>
-<tr>
-<td>Grayscale</td>
-<td><code>ThemeTweakerGrayscaleCommand</code> will apply a grayscale filter to all colors.  You can limit the filter to the background or foreground using the <code>context</code> argument and giving it a value of <code>bg</code> or <code>fg</code> respectively.</td>
-</tr>
-<tr>
-<td>Glow</td>
-<td><code>ThemeTweakerGlowCommand</code> can take a floating point glow intensity to determine the strength of the glow.  Glow should be between <code>0.0</code> and <code>1.0</code>.</td>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
 </tr>
 </tbody>
 </table>
-<p>Commands are constructed like so:<br />
-<div class="codehilite"><pre><span class="p">{</span>
-    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span>
-    <span class="p">}</span>
-<span class="p">},</span>
-</pre></div>
-</p>
-<p>To limit a command or shortcut to only when <code>ThemeMode</code> is enabled:<br />
-<div class="codehilite"><pre><span class="p">{</span>
-    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span>
-    <span class="p">}</span>
-<span class="p">},</span>
-</pre></div>
-</p>
-<p>To override the default step, hue, or intensity (override argument name will vary depending on function):<br />
-<div class="codehilite"><pre><span class="p">{</span>
-    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;step&quot;</span><span class="o">:</span> <span class="mf">0.05</span>
-    <span class="p">}</span>
-<span class="p">},</span>
-</pre></div>
-</p>
-<p>Apply filter to just the foreground (for all commands except <code>glow</code>):<br />
-<div class="codehilite"><pre><span class="p">{</span>
-    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;step&quot;</span><span class="o">:</span> <span class="mf">0.05</span><span class="p">,</span>
-        <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="s2">&quot;fg&quot;</span>
-    <span class="p">}</span>
-<span class="p">},</span>
-</pre></div>
-</p>
-<p><code>TweakMode</code> can be enabled/disabled via the command palette command <code>Theme Tweaker: Toggle Tweak Mode</code></p>
-<h1 id="special-commands"><a name="user-content-special-commands" href="#special-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Special Commands</h1>
+</dd>
+</dl>
+<h3 id="saturation"><a name="user-content-saturation" href="#saturation" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Saturation</h3>
+<dl>
+<dt>theme_tweaker_saturation</dt>
+<dd>
+<p>Adjust the brightness of theme.</p>
 <table>
 <thead>
 <tr>
-<th>Action</th>
+<th>Parameters</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Undo</td>
-<td><code>ThemeTweakerUndoCommand</code> reverts the last applied filter.</td>
+<td>direction</td>
+<td>string</td>
+<td>Accepts a string that is either <code>+</code> or &lsquo;-&lsquo; to control whether to go brighter or darker respectively.</td>
 </tr>
 <tr>
-<td>Redo</td>
-<td><code>ThemeTweakerRedoCommand</code> re-applies the last applied filter that was reverted.</td>
+<td>step</td>
+<td>float</td>
+<td>Controls the brightness magnitude for each step. It is in relation to the center <code>1.0</code>.  So a value of <code>0.01</code> would shift it <code>1.01</code>.</td>
 </tr>
 <tr>
-<td>Clear</td>
-<td><code>ThemeTweakerClearCommand</code> clears all applied filters.</td>
+<td>context</td>
+<td>string</td>
+<td>You can limit the filter to the background or foreground by setting the argument to either <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
 </tr>
 </tbody>
 </table>
-<h1 id="custom-filter-command"><a name="user-content-custom-filter-command" href="#custom-filter-command" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Custom Filter Command</h1>
-<p><code>ThemeTweakerCustomCommand</code> is a command that allows you to manually chain different filters together.  It takes a string with special syntax to apply filters.  It will not calculate values in relation to center, or take separate direction arguments etc.  All operations are defined by a single string.</p>
-<p>example:<br />
+</dd>
+</dl>
+<h3 id="hue"><a name="user-content-hue" href="#hue" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Hue</h3>
+<dl>
+<dt>theme_tweaker_hue</dt>
+<dd>
+<p>Shift the hue of colors in the theme.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Accepts a string that is either <code>+</code> or &lsquo;-&lsquo; to control whether to go brighter or darker respectively.</td>
+</tr>
+<tr>
+<td>step</td>
+<td>int</td>
+<td>Accepts an integer which represents a degree between <code>0</code> and <code>360</code> to shift the hue.</td>
+</tr>
+<tr>
+<td>context</td>
+<td>string</td>
+<td>You can limit the filter to the background or foreground by setting the argument to either <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h3 id="colorize"><a name="user-content-colorize" href="#colorize" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Colorize</h3>
+<dl>
+<dt>theme_tweaker_colorize</dt>
+<dd>
+<p>Applies the given hue to all colors in the theme.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hue</td>
+<td>int</td>
+<td>Accepts a hue value that will be applied to all colors.</td>
+</tr>
+<tr>
+<td>context</td>
+<td>string</td>
+<td>You can limit the filter to the background or foreground by setting the argument to either <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h3 id="invert"><a name="user-content-invert" href="#invert" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Invert</h3>
+<dl>
+<dt>theme_tweaker_invert</dt>
+<dd>
+<p>Command will invert all colors of the theme.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>string</td>
+<td>You can limit the filter to the background or foreground by setting the argument to either <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h3 id="sepia"><a name="user-content-sepia" href="#sepia" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Sepia</h3>
+<dl>
+<dt>theme_tweaker_sepia</dt>
+<dd>
+<p>Applies a sepia filer to the theme colors.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>string</td>
+<td>You can limit the filter to the background or foreground by setting the argument to either <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h3 id="grayscale"><a name="user-content-grayscale" href="#grayscale" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Grayscale</h3>
+<dl>
+<dt>theme_tweaker_grayscale</dt>
+<dd>
+<p>Applies a grayscale filter to the theme colors.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context</td>
+<td>string</td>
+<td>You can limit the filter to the background or foreground by setting the argument to either <code>bg</code> or <code>fg</code> respectively.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h3 id="glow"><a name="user-content-glow" href="#glow" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Glow</h3>
+<dl>
+<dt>theme_tweaker_glow</dt>
+<dd>
+<p>Apply a glow filter to foreground colors.</p>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intensity</td>
+<td>float</td>
+<td>Accepts a floating point glow intensity to determine the strength of the glow.  Glow should be between <code>0.0</code> and <code>1.0</code>.</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>string</td>
+<td>Theme to adjust.  If none, it will use the current set theme.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h3 id="custom-filter"><a name="user-content-custom-filter" href="#custom-filter" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Custom Filter</h3>
+<dl>
+<dt>theme_tweaker_custom</dt>
+<dd>
+<p>A command that allows multiple filters to be chained together.  It takes a string with special syntax to apply filters.  All filters that are available under <a href="#filter-commands">Filter Commands</a> are configurable.  All operations are defined by a single string.</p>
+<p><strong>Available Filters:</strong><br />
+- grayscale<br />
+- sepia<br />
+- invert<br />
+- brightness(float)<br />
+- saturation(float)<br />
+- hue(signed integer)<br />
+- colorize(integer)<br />
+- glow(positive float)</p>
+<p>To apply a filter to just the foreground or background, simply add <code>@fg</code> or <code>@bg</code> to the filter in question.</p>
+<p><strong>Example:</strong></p>
 <div class="codehilite"><pre><span class="p">{</span>
     <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
     <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_custom&quot;</span><span class="p">,</span>
@@ -271,17 +422,56 @@
     <span class="p">}</span>
 <span class="p">},</span>
 </pre></div>
-</p>
-<p>The available filters are:<br />
-- grayscale<br />
-- sepia<br />
-- invert<br />
-- brightness(float)<br />
-- saturation(float)<br />
-- hue(signed integer)<br />
-- colorize(integer)<br />
-- glow(positive float)</p>
-<p>To apply a filter to just the foreground or background, simply add <code>@fg</code> or <code>@bg</code> to the filter in question.</p>
+
+
+</dd>
+</dl>
+<h2 id="special-commands"><a name="user-content-special-commands" href="#special-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Special Commands</h2>
+<h3 id="undo"><a name="user-content-undo" href="#undo" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Undo</h3>
+<dl>
+<dt>theme_tweaker_undo</dt>
+<dd>Undo last applied filter.</dd>
+</dl>
+<h3 id="redo"><a name="user-content-redo" href="#redo" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Redo</h3>
+<dl>
+<dt>theme_tweaker_redo</dt>
+<dd>Re-apply last reverted filter.</dd>
+</dl>
+<h3 id="clear"><a name="user-content-clear" href="#clear" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Clear</h3>
+<dl>
+<dt>theme_tweaker_clear</dt>
+<dd>Clears all applied filters.</dd>
+</dl>
+<h3 id="toggle-theme-tweaker-mode"><a name="user-content-toggle-theme-tweaker-mode" href="#toggle-theme-tweaker-mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Toggle Theme Tweaker Mode</h3>
+<p>This command is available in the command palette as <code>Theme Tweaker: Toggle Tweak Mode</code>.</p>
+<dl>
+<dt>toggle_theme_tweaker_mode</dt>
+<dd>Toggles the internal <code>theme_tweaker</code> mode flag that can be used as a context for when tweak commands are active.  See <a href="#constructing-commands">Constructing Commands</a> for more info.</dd>
+</dl>
+<h2 id="constructing-commands"><a name="user-content-constructing-commands" href="#constructing-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Constructing Commands</h2>
+<p>Whether a keymap, command palette, or menu command is desired, the two theme tweaker related required arguments are <code>command</code> which is the name of the commands and <code>args</code> which is a dictionary of the parameters.</p>
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
+
+
+<p>Theme tweaker can check for the <code>theme_tweaker</code> context to control whether a command is active or not.  The <code>theme_tweaker</code> context is toggled with the <a href="#toggle-theme-tweaker-mode">Toggle Theme Tweaker Mode</a> command.</p>
+<div class="codehilite"><pre><span class="p">{</span>
+    <span class="s2">&quot;keys&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;up&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker_brightness&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;context&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;theme_tweaker&quot;</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;direction&quot;</span><span class="o">:</span> <span class="s2">&quot;+&quot;</span>
+    <span class="p">}</span>
+<span class="p">},</span>
+</pre></div>
               
             </div>
           </div>
